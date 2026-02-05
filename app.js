@@ -83,7 +83,7 @@ async function processPhotoWithIA(base64Image) {
 
     } catch (error) {
         console.error("LOG: Fallo la conexión con el servidor:", error);
-        alert('Fallo la conexión con el servidor. ¿Está corriendo Node.js?');
+        alert('No se pudo conectar con el servidor. Si es la primera vez que usas la app, el servidor puede tardar hasta 60 segundos en despertar. Por favor intenta nuevamente en unos momentos.');
         changeStep(captureStep);
     }
 }
