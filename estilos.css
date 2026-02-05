@@ -316,6 +316,20 @@ header img {
 
 /* Responsive para móviles */
 @media (max-width: 768px) {
+    header img {
+        max-width: 25%;
+        min-width: 80px;
+    }
+
+    .header h1 {
+        font-size: 2em;
+    }
+
+    .header p {
+        width: 85vw;
+        font-size: 0.95em;
+    }
+
     .container {
         padding-top: 80px;
         padding-bottom: 60px;
