@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const shareBtn = document.getElementById('share-btn');
     const retakeBtn = document.getElementById('retake-btn');
     const transformedPhoto = document.getElementById('transformed-photo');
-    const API_ENDPOINT = 'http://localhost:3001/api/transformar-foto';
+    const API_ENDPOINT = 'https://irisarri-backend.onrender.com/api/transformar-foto';
 
     // -----------------------------------------------------
     // FUNCIONALIDAD: MANEJO DE PASOS
