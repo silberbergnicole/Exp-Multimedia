@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Irisarri | Viaje al Pasado IA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Instrument+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+    <!-- Galería decorativa de fotos históricas -->
+    <div class="historic-gallery">
+        <img src="./images/fabrica-1898.jpg" alt="Fábrica Irisarri 1898" class="historic-photo photo-1">
+        <img src="./images/salon-te.jpg" alt="Salón de Té Irisarri" class="historic-photo photo-2">
+        <img src="./images/vehiculo-reparto.png" alt="Vehículo de reparto Irisarri" class="historic-photo photo-3">
+        <img src="./images/carruaje.png" alt="Carruaje Irisarri" class="historic-photo photo-4">
+    </div>
+
+    <header class="header">
+        <img src="/logo.png" alt="">
+        <h1>Viaje en el Tiempo</h1>
+        <p>Descubre cómo te verías en nuestra fundación, en 1898.</p>
+    </header>
+
+    <main class="container">
+        
+        <section id="capture-step" class="step active">
+            <h2>Paso 1: ¡Hazte una foto!</h2>
+            <div class="photo-input">
+                <input type="file" id="photo-file" accept="image/*" capture="user">
+                <label for="photo-file" class="main-button">
+                    Toca para Capturar
+                </label>
+            </div>
+            <p class="instruction-text">Asegúrate de tener buena luz para un mejor resultado.</p>
+        </section>
+
+        <section id="processing-step" class="step hidden">
+            <h2>Viajando en el tiempo...</h2>
+            <div class="loader"></div> 
+        </section>
+
+        <section id="result-step" class="step hidden">
+            <h2>¡Aquí tienes tu retrato de 1898!</h2>
+            <div class="photo-result-container">
+                <img id="transformed-photo" src="" alt="Foto transformada a estilo vintage" class="photo-result">
+                <div class="brand-overlay">Irisarri 1898</div>
+            </div>
+            <div class="actions">
+                <button id="download-btn" class="main-button download-btn">Descargar Imagen</button>
+                <button id="share-btn" class="secondary-button"> Compartir en Redes</button>
+                <button id="retake-btn" class="secondary-button"> Tomar Otra Foto</button>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="app.js"></script> 
+</body>
+</html>

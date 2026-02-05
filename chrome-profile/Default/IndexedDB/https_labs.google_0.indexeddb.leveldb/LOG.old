@@ -1,0 +1,4 @@
+2025/11/25-15:38:35.100 1ea8 Reusing MANIFEST D:\FACULTAD\semestre 8\PROYECTO\experiencia multimedia\chrome-profile\Default\IndexedDB\https_labs.google_0.indexeddb.leveldb/MANIFEST-000001
+2025/11/25-15:38:35.101 1ea8 Recovering log #7
+2025/11/25-15:38:35.101 1ea8 Reusing old log D:\FACULTAD\semestre 8\PROYECTO\experiencia multimedia\chrome-profile\Default\IndexedDB\https_labs.google_0.indexeddb.leveldb/000007.log 
+2025/11/25-15:38:35.117 22e0 Manual compaction at level-0 from '\x00\x09\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x0a\x00\x00\x00' @ 0 : 0; will stop at (end)

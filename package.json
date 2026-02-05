@@ -1,0 +1,27 @@
+{
+  "name": "experiencia-multimedia",
+  "version": "1.0.0",
+  "description": "",
+  "main": "codigo.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@google-cloud/storage": "^7.17.3",
+    "@google-cloud/vertexai": "^1.10.0",
+    "@google/genai": "^1.30.0",
+    "@imgly/background-removal-node": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "google-auth-library": "^10.5.0",
+    "node-fetch": "^2.7.0",
+    "puppeteer": "^24.31.0",
+    "replicate": "^1.4.0",
+    "sharp": "^0.34.5"
+  }
+}
