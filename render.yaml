@@ -1,7 +1,8 @@
 services:
   - type: web
     name: irisarri-backend
-    runtime: node
+    env: node
+    plan: free
     buildCommand: npm install
     startCommand: node server-final.js
     envVars:
@@ -13,3 +14,5 @@ services:
         value: us-central1
       - key: REPLICATE_API_TOKEN
         sync: false
+      - key: NODE_ENV
+        value: production
