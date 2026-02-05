@@ -1,0 +1,10 @@
+﻿node_modules/
+dist/
+build/
+.vscode/
+.DS_Store
+.env
+vertex-ai-key.json
+*.json
+!package.json
+!package-lock.json
