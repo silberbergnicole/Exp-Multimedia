@@ -9,7 +9,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const shareBtn = document.getElementById('share-btn');
     const retakeBtn = document.getElementById('retake-btn');
     const transformedPhoto = document.getElementById('transformed-photo');
+    const loadingMessage = document.getElementById('loading-message');
     const API_ENDPOINT = 'https://irisarri-backend.onrender.com/api/transformar-foto';
+
+    // Mensajes de carga
+    const loadingMessages = [
+        'Recreando un momento de la historia…',
+        'Viajando a 1898…',
+        'Construyendo un recuerdo de otra época…',
+        'Procesando imagen… casi listo.',
+        'Cargando nostalgia…'
+    ];
+    let messageIndex = 0;
+    let messageInterval = null;
 
     // -----------------------------------------------------
     // FUNCIONALIDAD: MANEJO DE PASOS
@@ -38,6 +50,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 1. Cambia a la pantalla de Procesamiento
         changeStep(processingStep);
+        
+        // Iniciar alternancia de mensajes
+        messageIndex = 0;
+        loadingMessage.textContent = loadingMessages[messageIndex];
+        messageInterval = setInterval(() => {
+            messageIndex = (messageIndex + 1) % loadingMessages.length;
+            loadingMessage.textContent = loadingMessages[messageIndex];
+        }, 3000);
 
         // 2. Lee el archivo como Base64 (necesario para enviar por JSON/API)
         const reader = new FileReader();
@@ -67,6 +87,12 @@ async function processPhotoWithIA(base64Image) {
 
         const data = await response.json();
         
+        // Detener la alternancia de mensajes
+        if (messageInterval) {
+            clearInterval(messageInterval);
+            messageInterval = null;
+        }
+        
         if (data.success && data.url_imagen) {
             const urlFinal = data.url_imagen;
 
@@ -82,6 +108,11 @@ async function processPhotoWithIA(base64Image) {
         }
 
     } catch (error) {
+        // Detener la alternancia de mensajes en caso de error
+        if (messageInterval) {
+            clearInterval(messageInterval);
+            messageInterval = null;
+        }
         console.error("LOG: Fallo la conexión con el servidor:", error);
         alert('No se pudo conectar con el servidor. Si es la primera vez que usas la app, el servidor puede tardar hasta 60 segundos en despertar. Por favor intenta nuevamente en unos momentos.');
         changeStep(captureStep);
