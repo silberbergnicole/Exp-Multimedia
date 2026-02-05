@@ -17,12 +17,23 @@ const PROJECT_ID = process.env.GOOGLE_CLOUD_PROJECT_ID;
 const REGION = process.env.GOOGLE_CLOUD_REGION;
 const BUCKET_NAME = `${PROJECT_ID}-irisarri-uploads`;
 
+// Configuración de credenciales: soporta archivo local o variable de entorno
+let credentials;
+if (process.env.GOOGLE_CREDENTIALS) {
+    // En producción (Render): lee las credenciales desde variable de entorno
+    credentials = JSON.parse(process.env.GOOGLE_CREDENTIALS);
+} else if (process.env.GOOGLE_APPLICATION_CREDENTIALS) {
+    // En desarrollo local: lee desde archivo
+    credentials = require(process.env.GOOGLE_APPLICATION_CREDENTIALS);
+}
+
 const storage = new Storage({
-    keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS
+    credentials: credentials,
+    projectId: PROJECT_ID
 });
 
 const auth = new GoogleAuth({
-    keyFile: process.env.GOOGLE_APPLICATION_CREDENTIALS,
+    credentials: credentials,
     scopes: 'https://www.googleapis.com/auth/cloud-platform'
 });
 

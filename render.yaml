@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: irisarri-backend
+    env: node
+    buildCommand: npm install
+    startCommand: node server-final.js
+    envVars:
+      - key: GOOGLE_APPLICATION_CREDENTIALS
+        sync: false
+      - key: GOOGLE_CLOUD_PROJECT_ID
+        value: gen-lang-client-0746607273
+      - key: GOOGLE_CLOUD_REGION
+        value: us-central1
+      - key: REPLICATE_API_TOKEN
+        sync: false
