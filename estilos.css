@@ -11,7 +11,7 @@
     /* Naranja más oscuro para hover */
     --color-text: #4a4a4a;
     /* Gris oscuro para texto normal */
-    --color-background: #faf8f3;
+    --color-background: #faf8f32a;
     /* Crema muy claro */
 
     /* Fuentes */
@@ -76,7 +76,7 @@ header img {
 .container {
     width: 90%;
     max-width: 500px;
-    background-color: rgba(255, 255, 255, 0);
+    background-color: rgba(255, 255, 255, 0.703);
     padding: 40px 30px;
     border-radius: 8px;
     /* box-shadow: 0 2px 20px rgba(30, 58, 95, 0.08); */
