@@ -21,10 +21,17 @@ const BUCKET_NAME = `${PROJECT_ID}-irisarri-uploads`;
 let credentials;
 if (process.env.GOOGLE_CREDENTIALS) {
     // En producción (Render): lee las credenciales desde variable de entorno
+    console.log('✅ Usando credenciales desde GOOGLE_CREDENTIALS');
     credentials = JSON.parse(process.env.GOOGLE_CREDENTIALS);
 } else if (process.env.GOOGLE_APPLICATION_CREDENTIALS) {
     // En desarrollo local: lee desde archivo
-    credentials = require(process.env.GOOGLE_APPLICATION_CREDENTIALS);
+    console.log('✅ Usando credenciales desde archivo:', process.env.GOOGLE_APPLICATION_CREDENTIALS);
+    const fs = require('fs');
+    credentials = JSON.parse(fs.readFileSync(process.env.GOOGLE_APPLICATION_CREDENTIALS, 'utf8'));
+} else {
+    console.error('❌ ERROR: No se encontraron credenciales de Google Cloud');
+    console.error('   Configura GOOGLE_CREDENTIALS o GOOGLE_APPLICATION_CREDENTIALS');
+    process.exit(1);
 }
 
 const storage = new Storage({
