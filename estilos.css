@@ -339,26 +339,26 @@ header img {
     }
 
     .historic-photo {
-        width: 150px !important;
+        width: 220px !important;
     }
 
     .historic-photo.photo-1 {
         top: 35%;
-        left: -40px;
+        left: -60px;
     }
 
     .historic-photo.photo-2 {
         top: 43%;
-        right: -40px;
+        right: -60px;
     }
 
     .historic-photo.photo-3 {
         bottom: 15%;
-        left: -40px;
+        left: -60px;
     }
 
     .historic-photo.photo-4 {
         bottom: 8%;
-        right: -40px;
+        right: -60px;
     }
 }

@@ -12,7 +12,5 @@ services:
         value: gen-lang-client-0746607273
       - key: GOOGLE_CLOUD_REGION
         value: us-central1
-      - key: REPLICATE_API_TOKEN
-        sync: false
       - key: NODE_ENV
         value: production
