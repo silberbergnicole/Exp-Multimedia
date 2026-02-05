@@ -95,16 +95,44 @@ async function processPhotoWithIA(base64Image) {
     
     // Botón de Descarga
     downloadBtn.addEventListener('click', () => {
-        const url = downloadBtn.getAttribute('data-download-url');
-        if (url) {
-            // Crea un enlace temporal para forzar la descarga
+        // Crear un canvas para capturar la imagen con los filtros CSS aplicados
+        const img = transformedPhoto;
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Configurar el tamaño del canvas igual que la imagen
+        canvas.width = img.naturalWidth;
+        canvas.height = img.naturalHeight;
+        
+        // Aplicar los mismos filtros CSS al contexto del canvas
+        ctx.filter = 'sepia(90%) brightness(0.9) contrast(1.3) saturate(0.5) hue-rotate(15deg) grayscale(15%)';
+        
+        // Dibujar la imagen en el canvas con los filtros
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        
+        // Aplicar el efecto de viñeta y grano manualmente
+        // Viñeta
+        const gradient = ctx.createRadialGradient(
+            canvas.width / 2, canvas.height / 2, 0,
+            canvas.width / 2, canvas.height / 2, Math.max(canvas.width, canvas.height) / 1.5
+        );
+        gradient.addColorStop(0, 'rgba(0, 0, 0, 0)');
+        gradient.addColorStop(0.7, 'rgba(0, 0, 0, 0)');
+        gradient.addColorStop(1, 'rgba(101, 67, 33, 0.4)');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        // Convertir el canvas a blob y descargar
+        canvas.toBlob((blob) => {
+            const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'Irisarri_Vintage_1905.jpg'; // Nombre del archivo de descarga
+            a.download = 'Irisarri_Vintage_1898.jpg';
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
-        }
+            URL.revokeObjectURL(url);
+        }, 'image/jpeg', 0.95);
     });
 
     // Botón de Compartir (Simulación para móvil)
